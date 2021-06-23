@@ -18,12 +18,22 @@ document.querySelector('.check').addEventListener('click', () => {
   } else if (guess === secretNumber) {
     document.querySelector('.message').textContent = '🎇 Correct Number!';
   } else if (guess > secretNumber) {
-    document.querySelector('.message').textContent = '↗ Too High!';
-    score--;
-    document.querySelector('.score').textContent = score;
+    if (score > 1) {
+      document.querySelector('.message').textContent = '↗ Too High!';
+      score--;
+      document.querySelector('.score').textContent = score;
+    } else {
+      document.querySelector('.message').textContent = '💥 You lost!';
+      document.querySelector('.score').textContent = 0;
+    }
   } else if (guess < secretNumber) {
-    document.querySelector('.message').textContent = '↘ Too Low!';
-    score--;
-    document.querySelector('.score').textContent = score;
+    if (score > 1) {
+      document.querySelector('.message').textContent = '↘ Too Low!';
+      score--;
+      document.querySelector('.score').textContent = score;
+    } else {
+      document.querySelector('.message').textContent = '💥 You lost!';
+      document.querySelector('.score').textContent = 0;
+    }
   }
 });
